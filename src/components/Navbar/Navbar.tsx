@@ -7,7 +7,7 @@ export default function Navbar() {
         src={"/images/logo.png"}
         alt="church logo"
         height={50}
-        width={150}
+        width={110}
         className="h-[90%]"
       />
       <button className="text-white py-2 px-4 h-full rounded-md bg-[#00CFFF] text-sm">
