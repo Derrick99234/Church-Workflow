@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
 import Image from "next/image";
 
 export default function Home() {
@@ -6,6 +7,20 @@ export default function Home() {
     <main>
       <section className="bg-gradient-to-r pt-24 py-10 from-[#293857] to-[#00CFFF] flex justify-around items-center  px-10">
         <Navbar />
+        <Image
+          src={"/images/Ellipse 1.png"}
+          alt="church logo"
+          height={60}
+          width={150}
+          className="absolute top-0 left-0 w-11"
+        />
+        <Image
+          src={"/images/Ellipse 3.png"}
+          alt="church logo"
+          height={60}
+          width={150}
+          className="absolute top-0 right-0 w-11"
+        />
         <div className="w-1/2">
           <h2 className="text-6xl text-white font-semibold leading-snug">
             All Your Church Workflow{" "}
@@ -143,49 +158,7 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <footer className="bg-[#293857] h-[150px] flex items-center justify-center flex-col text-white">
-        <div className="flex gap-4 items-center mb-5">
-          <Image
-            src="images/social.svg"
-            alt="social icon"
-            height="40"
-            width="40"
-          />
-          <Image
-            src="images/social(1).svg"
-            alt="social icon"
-            height="40"
-            width="40"
-          />
-          <Image
-            src="images/social(2).svg"
-            alt="social icon"
-            height="40"
-            width="40"
-          />
-          <Image
-            src="images/social(3).svg"
-            alt="social icon"
-            height="40"
-            width="40"
-          />
-        </div>
-        <p>© 2024 Copyright. ChurchWebflow.com</p>
-      </footer>
-      <Image
-        src={"/images/Ellipse 1.png"}
-        alt="church logo"
-        height={60}
-        width={150}
-        className="absolute top-0 left-0 w-11"
-      />
-      <Image
-        src={"/images/Ellipse 3.png"}
-        alt="church logo"
-        height={60}
-        width={150}
-        className="absolute top-0 right-0 w-11"
-      />
+      <Footer />
     </main>
   );
 }
