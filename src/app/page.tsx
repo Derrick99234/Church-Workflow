@@ -20,7 +20,7 @@ export default function Home() {
           </button>
         </div>
         <Image
-          src={"/images/phone.png"}
+          src={"/images/phone.svg"}
           alt="church logo"
           height={60}
           width={150}
@@ -63,7 +63,7 @@ export default function Home() {
           </div>
         </div>
         <div className="max-w-[45%] w-full">
-          <div className="flex items-center p-4 border rounded-md text-sm mb-12">
+          <div className="flex items-center p-4 border rounded-md text-sm mb-14 ml-auto w-[70%]">
             <p>
               <strong>Efficient Member Onboarding:</strong> Simplify welcoming
               new members by guiding them through every onboarding step, from
@@ -73,7 +73,7 @@ export default function Home() {
               src={"/images/box2.svg"}
               alt="church logo"
               height={60}
-              width={150}
+              width={120}
             />
           </div>
           <div className="flex items-center p-4 border rounded-md text-sm">
@@ -92,6 +92,86 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="flex justify-center gap-10 py-20">
+        <form action="" className="bg-[#293857] p-8 max-w-md">
+          <label className="text-white mb-2 block mt-3" htmlFor="name">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+            className="w-full h-12 outline-none rounded-md border py-1 px-3"
+          />
+          <label className="text-white mb-2 block mt-3" htmlFor="email">
+            Email
+          </label>
+          <input
+            type="text"
+            id="email"
+            placeholder="Enter your email"
+            className="w-full h-12 outline-none rounded-md border py-1 px-3"
+          />
+          <label className="text-white mb-2 block mt-3" htmlFor="church">
+            Church (Optional)
+          </label>
+          <input
+            type="text"
+            id="church"
+            placeholder="Enter your church's name"
+            className="w-full h-12 outline-none rounded-md border py-1 px-3 mb-4"
+          />
+          <button className="text-white py-3 px-4 text-center rounded-md bg-[#00CFFF] text-sm">
+            Join the Waiting List
+          </button>
+        </form>
+        <div className="max-w-md">
+          <h2 className="font-bold text-3xl ">
+            Join the <span className="text-[#00CFFF]">waiting List</span> for
+            Early Access
+          </h2>
+          <p className="my-4 font-medium">
+            Be among the first to experience the full power of Church Workflow.
+            Sign up now and get priority access when we launch!
+          </p>
+          <p className="text-sm">
+            Church Workflow is coming soon, and we want you to be a part of it.
+            By joining the waiting list, you&apos;ll receive exclusive updates,
+            early access to new features, and the opportunity to shape the
+            future of church management. Don&apos;t miss out on the chance to
+            streamline your church&apos;s operations from day one.
+          </p>
+        </div>
+      </section>
+      <footer className="bg-[#293857] h-[150px] flex items-center justify-center flex-col text-white">
+        <div className="flex gap-4 items-center mb-5">
+          <Image
+            src="images/social.svg"
+            alt="social icon"
+            height="40"
+            width="40"
+          />
+          <Image
+            src="images/social(1).svg"
+            alt="social icon"
+            height="40"
+            width="40"
+          />
+          <Image
+            src="images/social(2).svg"
+            alt="social icon"
+            height="40"
+            width="40"
+          />
+          <Image
+            src="images/social(3).svg"
+            alt="social icon"
+            height="40"
+            width="40"
+          />
+        </div>
+        <p>© 2024 Copyright. ChurchWebflow.com</p>
+      </footer>
       <Image
         src={"/images/Ellipse 1.png"}
         alt="church logo"
