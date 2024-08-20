@@ -5,24 +5,24 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main>
-      <section className="bg-gradient-to-r pt-24 py-10 from-[#293857] to-[#00CFFF] flex justify-around items-center  px-10">
+      <section className="bg-gradient-to-r pt-24 py-10 from-[#293857] to-[#00CFFF] flex justify-around items-center max-[715px]:flex-col px-10 max-[715px]:gap-5 max-[715px]:pt-36">
         <Navbar />
         <Image
           src={"/images/Ellipse 1.png"}
           alt="church logo"
           height={60}
           width={150}
-          className="absolute top-0 left-0 w-11"
+          className="absolute top-0 left-0 w-11 max-[545px]:w-8"
         />
         <Image
           src={"/images/Ellipse 3.png"}
           alt="church logo"
           height={60}
           width={150}
-          className="absolute top-0 right-0 w-11"
+          className="absolute top-0 right-0 w-11 max-[545px]:w-8"
         />
-        <div className="w-1/2">
-          <h2 className="text-6xl text-white font-semibold leading-snug">
+        <div className="w-1/2 max-[715px]:w-4/5 max-[465px]:w-[90%] max-[715px]:text-center">
+          <h2 className="text-6xl text-white font-semibold leading-snug max-[1272px]:text-[3.2rem] max-[1065px]:text-[2rem]">
             All Your Church Workflow{" "}
             <span className="text-[#00CFFF]">processes</span> in one place
           </h2>
@@ -30,7 +30,7 @@ export default function Home() {
             Simplify and Optimize Your Church&apos;s Day-to-Day Operations with
             a Robust System That Handles Everything.
           </p>
-          <button className="text-white py-3 px-4 h-full rounded-md bg-[#00CFFF] text-sm">
+          <button className="text-white py-3 px-4 h-12 rounded-md bg-[#00CFFF] text-sm">
             Request a Demo
           </button>
         </div>
@@ -39,12 +39,12 @@ export default function Home() {
           alt="church logo"
           height={60}
           width={150}
-          className="w-[40%]"
+          className="w-[40%] max-[715px]:w-3/5"
         />
       </section>
-      <section className="flex justify-around items-center py-10 px-20 gap-4">
-        <div className="max-w-[45%] w-full">
-          <h2 className="text-3xl font-semibold mb-4">
+      <section className="flex justify-around items-center py-10 px-20 gap-4 max-[823px]:flex-col max-[511px]:px-8">
+        <div className="max-w-[45%] w-full max-[823px]:max-w-full">
+          <h2 className="text-3xl font-semibold mb-4 max-[1063px]:text-2xl">
             Everything Your Church Needs To Stay Organized and{" "}
             <span className="text-[#00CFFF]">Connected</span>
           </h2>
@@ -63,7 +63,7 @@ export default function Home() {
               width={150}
             />
           </div>
-          <div className="flex items-center p-4 border rounded-md text-sm mt-8 w-[80%]">
+          <div className="flex items-center p-4 border rounded-md text-sm mt-8 w-[80%] max-[1127px]:w-full">
             <p>
               <strong>Seamless Event Documentation:</strong> Plan, schedule, and
               document all church events in one place, ensuring every detail is
@@ -77,8 +77,8 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="max-w-[45%] w-full">
-          <div className="flex items-center p-4 border rounded-md text-sm mb-14 ml-auto w-[70%]">
+        <div className="max-w-[53%] w-full max-[823px]:max-w-full">
+          <div className="flex items-center p-4 border rounded-md text-sm mb-14 ml-auto w-[70%] max-[1127px]:w-full">
             <p>
               <strong>Efficient Member Onboarding:</strong> Simplify welcoming
               new members by guiding them through every onboarding step, from
@@ -107,8 +107,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="flex justify-center gap-10 py-20">
-        <form action="" className="bg-[#293857] p-8 max-w-md">
+      <section className="flex justify-center gap-10 max-[721px]:items-center py-20 max-[721px]:flex-col-reverse">
+        <form action="" className="bg-[#293857] p-8 max-w-md max-[975px]:max-w-xs max-[721px]:max-w-[80%]">
           <label className="text-white mb-2 block mt-3" htmlFor="name">
             Name
           </label>
@@ -140,8 +140,8 @@ export default function Home() {
             Join the Waiting List
           </button>
         </form>
-        <div className="max-w-md">
-          <h2 className="font-bold text-3xl ">
+        <div className="max-w-md max-[975px]:max-w-sm max-[721px]:max-w-[80%]">
+          <h2 className="font-bold text-3xl max-[1063px]:text-2xl">
             Join the <span className="text-[#00CFFF]">waiting List</span> for
             Early Access
           </h2>

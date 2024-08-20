@@ -1,10 +1,12 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MailerModule } from './mailer/mailer.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [MailerModule],
+  imports: [ConfigModule.forRoot(), MailerModule],
   controllers: [AppController],
   providers: [AppService],
 })
