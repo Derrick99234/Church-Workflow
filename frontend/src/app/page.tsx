@@ -1,8 +1,51 @@
+"use client"
+import React, { useState } from 'react';
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import Image from "next/image";
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    church: '',
+  });
+  const [message, setMessage] = useState('');
+
+   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:2024/mailer/send_email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setMessage('Email sent successfully!');
+      } else {
+        setMessage('Failed to send email.');
+      }
+      setFormData({
+        name: '',
+        email: '',
+        church: '',
+      })
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setMessage('An error occurred.');
+    }
+  };
   return (
     <main>
       <section className="bg-gradient-to-r pt-24 py-10 from-[#293857] to-[#00CFFF] flex justify-around items-center max-[715px]:flex-col px-10 max-[715px]:gap-5 max-[715px]:pt-36">
@@ -108,7 +151,7 @@ export default function Home() {
         </div>
       </section>
       <section className="flex justify-center gap-10 max-[721px]:items-center py-20 max-[721px]:flex-col-reverse">
-        <form action="" className="bg-[#293857] p-8 max-w-md max-[975px]:max-w-xs max-[721px]:max-w-[80%]">
+        <form action="" className="bg-[#293857] p-8 max-w-md max-[975px]:max-w-xs max-[721px]:max-w-[80%]" onSubmit={handleSubmit}>
           <label className="text-white mb-2 block mt-3" htmlFor="name">
             Name
           </label>
@@ -117,6 +160,7 @@ export default function Home() {
             id="name"
             placeholder="Enter your name"
             className="w-full h-12 outline-none rounded-md border py-1 px-3"
+            onChange={handleChange} required
           />
           <label className="text-white mb-2 block mt-3" htmlFor="email">
             Email
@@ -126,6 +170,7 @@ export default function Home() {
             id="email"
             placeholder="Enter your email"
             className="w-full h-12 outline-none rounded-md border py-1 px-3"
+            onChange={handleChange} required
           />
           <label className="text-white mb-2 block mt-3" htmlFor="church">
             Church (Optional)
@@ -135,10 +180,12 @@ export default function Home() {
             id="church"
             placeholder="Enter your church's name"
             className="w-full h-12 outline-none rounded-md border py-1 px-3 mb-4"
+            onChange={handleChange} required
           />
           <button className="text-white py-3 px-4 text-center rounded-md bg-[#00CFFF] text-sm">
             Join the Waiting List
           </button>
+          {message && <p>{message}</p>}
         </form>
         <div className="max-w-md max-[975px]:max-w-sm max-[721px]:max-w-[80%]">
           <h2 className="font-bold text-3xl max-[1063px]:text-2xl">
