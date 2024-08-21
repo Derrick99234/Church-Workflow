@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { MailerService } from './mailer.service';
 import { SendEmailDto } from './mail.interface';
 
@@ -8,17 +8,20 @@ export class MailerController {
   constructor(private readonly mailerService: MailerService) {}
 
   @Post('/send_email')
-  async sendMail() {
+  async sendMail(@Body() waitListDetails: Record<string, string>) {
     const dto: SendEmailDto = {
-      from: { name: 'Lucy', address: 'pshubomi@gmail.ccom' },
-      recipients: [
-        {
-          name: 'Olatunbosun Olashubomi',
-          address: 'olatunbosunolashubomi@gmail.com',
-        },
-      ],
+      from: {
+        name: 'CHURCH WORKFLOW',
+        address: 'mailtrap@demomailtrap.com',
+      },
       subject: 'Church Workflow',
-      html: '<h2>Welcome</h2><p>This message is from church workflow website</p>',
+      html: `
+        <h2>Church workflow waitlist details</h2>
+        <p>This message is from church workflow website</p>
+        <p><strong>Name</strong>: ${waitListDetails.name}</p>
+        <p><strong>Email</strong>: ${waitListDetails.email}</p>
+        <p><strong>Church</strong>: ${waitListDetails.church}</p>
+      `,
     };
     return await this.mailerService.sendEmail(dto);
   }
