@@ -9,14 +9,9 @@ import Mail from 'nodemailer/lib/mailer';
 export class MailerService {
   constructor(private readonly configService: ConfigService) {}
   mailTransport() {
-    console.log('MAIL_HOST:', this.configService.get<string>('MAIL_HOST'));
-    console.log('USER:', this.configService.get<string>('USER'));
-    console.log('PASSWORD:', this.configService.get<string>('PASSWORD'));
-    console.log('PORT:', this.configService.get<number>('PORT'));
-
     const transporter = nodemailer.createTransport({
       host: this.configService.get<string>('MAIL_HOST'),
-      port: this.configService.get<number>('PORT'),
+      port: this.configService.get<number>('MAIL_PORT'),
       auth: {
         user: this.configService.get<string>('USER'),
         pass: this.configService.get<string>('PASSWORD'),
