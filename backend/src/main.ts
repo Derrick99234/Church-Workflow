@@ -7,7 +7,7 @@ async function bootstrap() {
 
   // Enable CORS
   app.enableCors({
-    origin: 'http://localhost:3000',
+    origin: 'https://church-workflow.vercel.app',
     methods: 'GET,POST',
     allowedHeaders: 'Content-Type',
   });
