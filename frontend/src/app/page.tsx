@@ -137,7 +137,7 @@ const { ref: refSection1, inView: inViewSection1 } = useInView({
         className="w-1/2 max-[715px]:w-4/5 max-[465px]:w-[90%] max-[715px]:text-center"
       >
         <h2 className="text-6xl text-white font-semibold leading-snug max-[1272px]:text-[3.2rem] max-[1065px]:text-[2rem]">
-          All Your Church's Workflow{" "}
+          All Your Church&apos;s Workflow{" "}
           <span className="text-[#00CFFF]">processes</span> in one place
         </h2>
         <p className="my-3 text-white">
