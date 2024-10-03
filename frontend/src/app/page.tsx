@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import Image from "next/image";
@@ -52,9 +52,17 @@ const { ref: refSection1, inView: inViewSection1 } = useInView({
     visible: { opacity: 1, x: 0, transition: { duration: 1, delay } },
   });
 
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setMessage("")
+    }, 2000); // 2 seconds after submission
+  }, [message])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    setLoading(true)
     try {
       const response = await fetch('https://church-workflow-api.onrender.com/mailer/send_email', {
         method: 'POST',
@@ -63,21 +71,24 @@ const { ref: refSection1, inView: inViewSection1 } = useInView({
         },
         body: JSON.stringify(formData),
       });
-
+      
       if (response.ok) {
         setMessage('Email sent successfully!');
       } else {
         setMessage('Failed to send email.');
       }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setMessage('An error occurred.');
+    } finally {
       setFormData({
         name: '',
         email: '',
         church: '',
       })
-    } catch (error) {
-      console.error('Error sending email:', error);
-      setMessage('An error occurred.');
-    }
+      setLoading(false)
+      }
+  
   };
   return (
     <main>
@@ -126,7 +137,7 @@ const { ref: refSection1, inView: inViewSection1 } = useInView({
         className="w-1/2 max-[715px]:w-4/5 max-[465px]:w-[90%] max-[715px]:text-center"
       >
         <h2 className="text-6xl text-white font-semibold leading-snug max-[1272px]:text-[3.2rem] max-[1065px]:text-[2rem]">
-          All Your Church Workflow{" "}
+          All Your Church's Workflow{" "}
           <span className="text-[#00CFFF]">processes</span> in one place
         </h2>
         <p className="my-3 text-white">
@@ -166,7 +177,7 @@ const { ref: refSection1, inView: inViewSection1 } = useInView({
       >
         <h2 className="text-3xl font-semibold mb-4 max-[1063px]:text-2xl">
           Everything Your Church Needs To Stay Organized and{" "}
-          <span className="text-[#00CFFF]">Connected</span>
+          <span className="text-[#00CFFF]">Connected.</span>
         </h2>
 
         {/* First Content Box */}
@@ -254,6 +265,7 @@ const { ref: refSection1, inView: inViewSection1 } = useInView({
       className="flex justify-center gap-10 max-[721px]:items-center py-20 max-[721px]:flex-col-reverse"
       initial="hidden"
       animate={inViewSection3 ? 'visible' : 'hidden'}
+      id="waitlist-section"
     >
       {/* Animated Form */}
       <motion.form
@@ -273,6 +285,7 @@ const { ref: refSection1, inView: inViewSection1 } = useInView({
           className="w-full h-12 outline-none rounded-md border py-1 px-3"
           onChange={handleChange}
           required
+          value={formData.name}
         />
         <label className="text-white mb-2 block mt-3" htmlFor="email">
           Email
@@ -284,6 +297,7 @@ const { ref: refSection1, inView: inViewSection1 } = useInView({
           className="w-full h-12 outline-none rounded-md border py-1 px-3"
           onChange={handleChange}
           required
+          value={formData.email}
         />
         <label className="text-white mb-2 block mt-3" htmlFor="church">
           Church (Optional)
@@ -294,11 +308,12 @@ const { ref: refSection1, inView: inViewSection1 } = useInView({
           placeholder="Enter your church's name"
           className="w-full h-12 outline-none rounded-md border py-1 px-3 mb-4"
           onChange={handleChange}
+          value={formData.church}
         />
-        <button className="text-white py-3 px-4 text-center rounded-md bg-[#00CFFF] text-sm">
-          Join the Waiting List
+        <button className="text-white py-3 px-4 text-center rounded-md bg-[#00CFFF] text-sm" disabled={loading}>
+          { loading ? "loading..." : "Join the Waiting List" }
         </button>
-        {message && <p className="text-white mt-3">{message}</p>}
+        {message && <p className="text-white mt-3 font-semibold text-xl font-mono">{message}</p>}
       </motion.form>
 
       {/* Animated Text Content */}
@@ -308,7 +323,7 @@ const { ref: refSection1, inView: inViewSection1 } = useInView({
       >
         <h2 className="font-bold text-3xl max-[1063px]:text-2xl">
           Join the <span className="text-[#00CFFF]">waiting List</span> for
-          Early Access
+          Early Access.
         </h2>
         <p className="my-4 font-medium">
           Be among the first to experience the full power of Church Workflow.
