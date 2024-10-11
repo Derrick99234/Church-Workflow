@@ -8,6 +8,15 @@ import { motion } from 'framer-motion';
 
 export default function Home() {
 
+  const handleClick = () => {
+    const waitlistSection = document.getElementById("waitlist-section");
+    if (waitlistSection) {
+      waitlistSection.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+
 const { ref: refSection1, inView: inViewSection1 } = useInView({
     threshold: 0.5,
     triggerOnce: true,
@@ -138,14 +147,14 @@ const { ref: refSection1, inView: inViewSection1 } = useInView({
       >
         <h2 className="text-6xl text-white font-semibold leading-snug max-[1272px]:text-[3.2rem] max-[1065px]:text-[2rem]">
           All Your Church&apos;s Workflow{" "}
-          <span className="text-[#00CFFF]">processes</span> in one place
+          <span className="text-[#00CFFF]">processes</span> in one place.
         </h2>
         <p className="my-3 text-white">
           Simplify and Optimize Your Church&apos;s Day-to-Day Operations with
           a Robust System That Handles Everything.
         </p>
-        <button className="text-white py-3 px-4 h-12 rounded-md bg-[#00CFFF] text-sm">
-          Request a Demo
+        <button className="text-white py-3 px-4 h-12 rounded-md bg-[#00CFFF] text-sm" onClick={handleClick}>
+          Join Waitlist
         </button>
       </motion.div>
 
